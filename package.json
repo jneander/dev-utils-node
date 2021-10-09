@@ -1,9 +1,5 @@
 {
   "name": "@jneander/dev-utils-node",
-  "engines": {
-    "node": "12.18.1",
-    "yarn": "1.22.15"
-  },
   "version": "1.0.1",
   "description": "Shared Development Tools for Node",
   "main": "./lib/index.js",
