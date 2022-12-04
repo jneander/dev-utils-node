@@ -3,11 +3,28 @@
   "version": "1.0.1",
   "description": "Shared Development Tools for Node",
   "main": "./lib/index.js",
+  "files": [
+    "./lib",
+    "CHANGELOG.md"
+  ],
   "scripts": {
+    "lint:commits": "commitlint --from $(git symbolic-ref --short refs/remotes/origin/HEAD) --to HEAD",
     "lint:eslint": "eslint .",
     "lint:eslint:fix": "eslint --fix .",
     "lint:prettier": "prettier --check .",
     "lint:prettier:fix": "prettier --write ."
+  },
+  "commitlint": {
+    "extends": "@jneander/commitlint-config"
+  },
+  "lint-staged": {
+    "*": "prettier --check --ignore-unknown"
+  },
+  "prettier": "@jneander/prettier-config",
+  "release": {
+    "extends": [
+      "@jneander/semantic-release-config"
+    ]
   },
   "repository": {
     "type": "git",
@@ -20,16 +37,16 @@
   ],
   "author": "Jeremy Neander <jeremy.neander@gmail.com>",
   "license": "MIT",
-  "engines": {
-    "node": ">=16"
-  },
   "dependencies": {
     "concurrently": "^7.0.0",
     "cross-env": "^7.0.0",
     "execa": "^5.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.0.0",
+    "@jneander/commitlint-config": "^1.0.1",
     "@jneander/prettier-config": "^1.0.0",
+    "@jneander/semantic-release-config": "^1.0.1",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
@@ -38,7 +55,10 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-promise": "^4.2.1",
+    "lint-staged": "^13.0.0",
     "prettier": "^2.8.0"
   },
-  "prettier": "@jneander/prettier-config"
+  "engines": {
+    "node": ">=16"
+  }
 }
